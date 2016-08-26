@@ -20,10 +20,11 @@
 		<section>
 			<div class="sectionContent">
 				<article>
-					<p id="article_text">작업을 시작할 index 를 입력하세요.</p>
-					<div class="col-xs-2" style="display: inline-block">
-					  <input type="text" class="form-control" id="index">
-					  <button onclick="report(1)" class="btn-primary">시작</button>
+					<p id="article_text">작업을 시작할 index와 작업자의 이름을 입력하세요.</p>
+					<div class="col-xs-4" style="display: inline-block">
+					  <input type="text" class="form-control" placeholder="index" id="index">
+					  <input type="text" class="form-control" placeholder="reporter name" id="reporter">
+					  <button onclick="moveTo()" class="btn-primary">시작</button>
 					</div>					
 				</article>
 				
@@ -37,6 +38,13 @@
 </div>
 
 <script>
+function moveTo()
+{
+	var reporter = document.getElementById('reporter').value;
+	var index = document.getElementById('index').value;
+	document.cookie = "name=" + reporter;
+	window.location.href = 'load.php?corpus_id=' + index;
+}
 </script>
 
 </body></html>
