@@ -36,7 +36,7 @@
 			echo $db->lastErrorMsg();
 		else
 		{
-			$sql = "INSERT INTO report (article_id, thread_id, reporter, label) VALUES (" . $article_id . "," . $thread_id . ",'" . $reporter . "'," . $label . ");";
+			$sql = "INSERT INTO reports (corpus_id, reporter, label, time) VALUES (" . $corpus_id . ",'" . $reporter . "'," . $label . ", datetime('now'));";
 
 //echo $sql;
 			$ret = $db->exec($sql);

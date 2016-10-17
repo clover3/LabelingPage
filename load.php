@@ -18,8 +18,11 @@
 	<div id="mainArea">
 
 		<section>
-			<div class="sectionTitle">
-				<h1><p id="keyword">카</p></h1>
+			<div id="index">-1</div>
+			<div height="100%" class="sectionTitle">
+				<h1>
+				<div id="keyword" style="text-align: center">로드 실패</div>
+				</h1>
 			</div>
 			
 			<div class="sectionContent">
@@ -33,6 +36,13 @@
 					  <button onclick="report(4)" class="btn-warning btn-lg">잘못된 Entity</button>
 					</div>
 					<div style="float: right;">
+					<h6><small>
+					<div valign="bottom">
+					<a id="prev" onclick="prev()">이전글</a>
+					<a id="next" onclick="next()">다음글</a>
+					</div>
+					<br>
+					</small></h6>
 						<a id="weblink" href="about:blank" target="_blank"><h6><small>홈페이지에서 보기</small></h6></a>
 					</div>
 
@@ -87,6 +97,15 @@ var thread_id = <?php echo $thread_id;?>;
 var content = <?php echo $content;?>;
 var keyword = <?php echo $keyword;?>;
 
+function prev(){
+	url = "load.php?corpus_id=" + (corpus_id - 1);
+	window.location.href = url;
+}
+function next(){
+	url = "load.php?corpus_id=" + (corpus_id + 1);
+	window.location.href = url;
+}
+
 function getCookie(cname) {
 	var name = cname + "=";
 	var ca = document.cookie.split(';');
@@ -131,6 +150,7 @@ function get_url(thread_id){
 function init_page(content, keyword, thread_id){
 	document.getElementById('article_text').innerHTML = get_highlight_text(content, keyword);
 	document.getElementById("keyword").innerHTML = keyword;
+	document.getElementById("index").innerHTML = corpus_id;
 	document.getElementById("weblink").href = get_url(thread_id);
 }
 
